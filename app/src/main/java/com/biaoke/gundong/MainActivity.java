@@ -33,12 +33,20 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private int itemLenth = 0;
     private View.OnClickListener listen = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             String msg = editText.getText().toString();
-            items = new String[]{msg};
-            verticalScrollTV.setItems(items);
+            if (itemLenth < 5) {
+                items[itemLenth] = msg;
+                verticalScrollTV.setItems(items);
+                itemLenth++;
+            } else {
+                itemLenth = 0;
+                items[itemLenth] = msg;
+                verticalScrollTV.setItems(items);
+            }
         }
     };
 
